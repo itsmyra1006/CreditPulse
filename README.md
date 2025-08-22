@@ -59,12 +59,13 @@ This project requires API keys from two services. You need to create a .env file
 ```bash
 Navigate to the server directory
 cd server
-```
+
 
 Create a .env file and add the following content:
 ALPHA_VANTAGE_API_KEY=YOUR_ALPHA_VANTAGE_KEY_HERE
 NEWS_API_KEY=YOUR_NEWS_API_KEY_HERE
 PORT=3001
+```
 
 Get an Alpha Vantage key from https://www.alphavantage.co/support/#api-key.
 
