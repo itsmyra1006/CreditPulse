@@ -11,6 +11,7 @@ Backend (Server): A Node.js server built with Express.js. It serves as the core 
 
 Tech Stack
 Frontend:
+
 React 18 with Vite
 
 TypeScript
@@ -20,6 +21,7 @@ Tailwind CSS
 Recharts for data visualization
 
 Backend:
+
 Node.js with Express.js
 
 axios for API requests
@@ -29,17 +31,20 @@ sentiment for NLP analysis
 dotenv for environment variable management
 
 Data Sources:
+
 Alpha Vantage API: For structured financial data (Company Overview, Financial Ratios).
 
 NewsAPI.org: For unstructured, real-time news headlines.
 
 Local Setup & Installation
 Prerequisites:
+
 Node.js (v18 or later)
 
 npm
 
 1. Clone the Repository:
+
 git clone [https://github.com/your-username/CreditPulse.git](https://github.com/your-username/CreditPulse.git)
 cd CreditPulse
 
@@ -90,6 +95,7 @@ Docker Setup
 You can also build and run the entire application in a single Docker container.
 
 Prerequisites:
+
 Docker Desktop installed and running.
 
 1. Build the Docker Image:
@@ -98,5 +104,9 @@ From the project's root directory, run:
 docker build -t creditpulse-app .
 
 2. Run the Docker Container:
+
 # This command runs the container and maps port 8080 on your machine to the container's port.
-# Make sure to create a .env file in the server directory
+# Make sure to create a .env file in the server directory before running.
+docker run -p 8080:3001 -d --env-file server/.env creditpulse-app
+
+The application will be available at http://localhost:8080.
