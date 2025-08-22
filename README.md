@@ -1,9 +1,6 @@
 CreditPulse
 CreditPulse is a real-time, explainable credit intelligence platform. It ingests multi-source data, generates dynamic creditworthiness scores using a transparent rule-based model, and presents the results in an interactive, analyst-friendly web dashboard.
 
-Live Demo
-[Link to Deployed Application] <!-- You will fill this in after deploying -->
-
 System Architecture
 The application is built on a modern client-server architecture:
 
@@ -61,9 +58,9 @@ ALPHA_VANTAGE_API_KEY=YOUR_ALPHA_VANTAGE_KEY_HERE
 NEWS_API_KEY=YOUR_NEWS_API_KEY_HERE
 PORT=3001
 
-Get an Alpha Vantage key from here.
+Get an Alpha Vantage key from https://www.alphavantage.co/support/#api-key.
 
-Get a NewsAPI.org key from here.
+Get a NewsAPI.org key from https://newsapi.org/.
 
 3. Install Dependencies:
 You need to install dependencies for both the client and the server.
