@@ -1,6 +1,8 @@
 import express from 'express';
 import cors from 'cors';
 import 'dotenv/config';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
 // Import our custom modules
 import { getCompanyOverview, getRecentNews } from './dataIngestion.js';
@@ -8,12 +10,20 @@ import { analyzeNewsSentiment } from './nlpService.js';
 import { calculateCreditScore } from './scoringEngine.js';
 import { generateExplanation } from './explainability.js';
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 const app = express();
 const PORT = process.env.PORT || 3001;
 
 // Middleware
 app.use(cors());
 app.use(express.json());
+
+// --- THIS IS THE NEW PART ---
+// Serve the static files from the React app
+app.use(express.static(path.join(__dirname, 'public')));
+// --- END OF NEW PART ---
 
 // --- Main API Endpoint ---
 app.get('/api/analyze/:ticker', async (req, res) => {
@@ -32,19 +42,16 @@ app.get('/api/analyze/:ticker', async (req, res) => {
     console.log(`[3/5] Processing data and analyzing sentiment...`);
     const { avgNewsSentiment, analyzedArticles } = analyzeNewsSentiment(recentNews);
     
-    // Extract financial metrics. Use parseFloat to ensure they are numbers. Handle 'None' or missing values.
     const debtToEquityRatio = parseFloat(overviewData.DebtToEquityRatio) || 2.0;
     const profitMargin = parseFloat(overviewData.ProfitMargin) || 0.0;
     const peRatio = parseFloat(overviewData.PERatio) || 51.0;
     const marketCap = parseInt(overviewData.MarketCapitalization, 10);
-    const returnOnEquity = parseFloat(overviewData.ReturnOnEquityTTM) || 0.0; // <-- NEW METRIC
 
     const features = {
         debtToEquityRatio,
         profitMargin,
         avgNewsSentiment,
-        peRatio,
-        returnOnEquity // <-- PASS NEW METRIC
+        peRatio
     };
 
     // 3. Scoring Engine
@@ -61,7 +68,7 @@ app.get('/api/analyze/:ticker', async (req, res) => {
       creditScore: score,
       shortTermTrend: "Stable",
       longTermTrend: "Improving",
-      summary: `Based on our rule-based model, ${companyName} has a credit score of ${score}. This is primarily driven by factors such as its Return on Equity of ${(returnOnEquity * 100).toFixed(2)}%, a profit margin of ${(profitMargin * 100).toFixed(2)}%, and recent market sentiment.`,
+      summary: `Based on our rule-based model, ${companyName} has a credit score of ${score}. This is primarily driven by factors such as its P/E ratio of ${peRatio.toFixed(2)}, a profit margin of ${(profitMargin * 100).toFixed(2)}%, and recent market sentiment.`,
       positiveFactors,
       negativeFactors,
       recentNews: explainedNews,
@@ -91,6 +98,14 @@ app.get('/api/analyze/:ticker', async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 });
+
+// --- THIS IS ALSO NEW ---
+// Handles any requests that don't match the ones above
+app.get('*', (req,res) =>{
+    res.sendFile(path.join(__dirname, 'public/index.html'));
+});
+// --- END OF NEW PART ---
+
 
 // Start the server
 app.listen(PORT, () => {
