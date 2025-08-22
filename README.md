@@ -52,6 +52,7 @@ npm
 git clone [https://github.com/your-username/CreditPulse.git](https://github.com/your-username/CreditPulse.git)
 cd CreditPulse
 
+
 2. Set Up API Keys:
 This project requires API keys from two services. You need to create a .env file in the server directory.
 
