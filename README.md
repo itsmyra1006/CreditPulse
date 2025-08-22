@@ -1,6 +1,7 @@
 CreditPulse
 CreditPulse is a real-time, explainable credit intelligence platform. It ingests multi-source data, generates dynamic creditworthiness scores using a transparent rule-based model, and presents the results in an interactive, analyst-friendly web dashboard.
 
+
 System Architecture
 The application is built on a modern client-server architecture:
 
