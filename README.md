@@ -2,15 +2,17 @@
 CreditPulse is a real-time, explainable credit intelligence platform. It ingests multi-source data, generates dynamic creditworthiness scores using a transparent rule-based model, and presents the results in an interactive, analyst-friendly web dashboard.
 
 
-System Architecture
+## System Architecture
 The application is built on a modern client-server architecture:
 
-Frontend (Client): A React single-page application built with Vite and TypeScript. It provides the user interface, handles user input, and communicates with the backend via API calls. All styling is done with Tailwind CSS.
+### Frontend (Client): 
+A React single-page application built with Vite and TypeScript. It provides the user interface, handles user input, and communicates with the backend via API calls. All styling is done with Tailwind CSS.
 
-Backend (Server): A Node.js server built with Express.js. It serves as the core logic engine. It exposes a single API endpoint to the client, handles data ingestion from multiple external APIs, performs sentiment analysis, calculates the credit score using a rule-based model, and generates explanations.
+### Backend (Server): 
+A Node.js server built with Express.js. It serves as the core logic engine. It exposes a single API endpoint to the client, handles data ingestion from multiple external APIs, performs sentiment analysis, calculates the credit score using a rule-based model, and generates explanations.
 
-Tech Stack
-Frontend:
+## Tech Stack
+### Frontend:
 
 React 18 with Vite
 
@@ -20,7 +22,7 @@ Tailwind CSS
 
 Recharts for data visualization
 
-Backend:
+### Backend:
 
 Node.js with Express.js
 
@@ -30,14 +32,16 @@ sentiment for NLP analysis
 
 dotenv for environment variable management
 
-Data Sources:
+## Data Sources:
 
-Alpha Vantage API: For structured financial data (Company Overview, Financial Ratios).
+### Alpha Vantage API: 
+For structured financial data (Company Overview, Financial Ratios).
 
-NewsAPI.org: For unstructured, real-time news headlines.
+### NewsAPI.org: 
+For unstructured, real-time news headlines.
 
-Local Setup & Installation
-Prerequisites:
+## Local Setup & Installation
+### Prerequisites:
 
 Node.js (v18 or later)
 
