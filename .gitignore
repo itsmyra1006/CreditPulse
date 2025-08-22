@@ -1,0 +1,22 @@
+# Dependencies
+/node_modules
+/client/node_modules
+/server/node_modules
+
+# Environment variables - THIS IS THE IMPORTANT PART
+.env
+server/.env
+client/.env
+
+# Build output
+/dist
+/client/dist
+
+# Logs
+logs
+*.log
+
+# IDE and OS files
+.vscode
+.idea
+.DS_Store
