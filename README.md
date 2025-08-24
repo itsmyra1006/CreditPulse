@@ -67,7 +67,6 @@ cd CreditPulse
 Step 3: Create the API Keys File
 
 ```bash
-You need to create a .env file inside the server folder.
 
 Create a new file named .env inside the CreditPulse/server directory.
 
